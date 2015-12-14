@@ -11,6 +11,18 @@ h3.admin{
 	text-align:center;
 }
 
+h3.main{
+    font-family:Calibri;
+    color:black;
+}
+
+h3.testa{
+    color:white;
+    font-family:Calibri;
+    font-size: 14pt;
+    
+}
+
 
 INPUT[TYPE="submit"]:hover
 	{ background-color:midnightblue;
@@ -27,6 +39,50 @@ INPUT[TYPE="submit"]
 	   font-weight: bold;
 	   border: none;
 	}
+        td.utente{
+            color:red;
+            font-weight: bold; 
+            font-size: 20pt;
+            text-align: center;
+        }
+        
+INPUT[type="button"]
+{
+    background-color:red;
+    text-align: center;
+    color:white;
+    font-size:25pt;
+    font-weight: bold;
+    border:3pt;
+    border-color: black;
+    border-style: groove;
+}
+
+INPUT[TYPE="button"]:hover
+{
+    background-color:midnightblue;
+    color:white;
+    font-size:25pt;
+    font-weight: bold;
+    text-align: center;
+    border:3pt;
+    border-color: black;
+    border-style: groove;
+}
+
+INPUT[TYPE="button"]:focus
+{
+    background-color:midnightblue;
+    color:white;
+    font-size:25pt;
+    text-align: center;
+    font-weight: bold;
+    border:3pt;
+    border-color: black;
+    border-style: groove;
+   
+}
+  
 
 table.login{
 	table-align:center;
@@ -36,6 +92,18 @@ table.login{
 	
 table.admin{
 	table-align:center;
+	
+       
+	}
+ table.admin2{
+	margin-left: 20pt;
+        margin-top: 10pt;
+	
+       
+	}
+    table.admin3{
+	
+        margin-top: 40pt;
 	
        
 	}
@@ -57,12 +125,22 @@ table.admin{
 	padding-left:10%;
 	
  }
-
+ #mainUtente{
+     position:fixed;
+	overflow:visible;
+	width: 75%; height:60%;
+	top: 22%; right: 0; left:0% ;
+        font-family: Calibri;
+        color:red;
+	padding: 4px;
+        padding-top: 50px;
+	padding-left:10%;
+ }
 #sidebar { 
 	position: fixed;
 	width: 30%; height: 100%;
 	right: 55%; left: 0%; top:22%; bottom: 30%;
-    font-family: Calibri;
+        font-family: Calibri;
 	padding: 8px;
 	padding-right:5px;
 	 }

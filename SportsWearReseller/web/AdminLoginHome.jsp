@@ -5,8 +5,8 @@
     <head>
         <title>Benvenuto <%=session.getAttribute("user")%></title>
                 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link rel="stylesheet" type="text/css" href="C:/Users/carfo/Esercizi Html/ProgettoIS/web/css">
-                <script language="javascript" type ="text/javascript" src="C:/Users/carfo/Esercizi Html/ProgettoIS/web/jscript/Admin.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/mioStile.css">
+                <script language="javascript" type ="text/javascript" src="jscript/Admin.js"></script>
     </head>
 	
 	<body>

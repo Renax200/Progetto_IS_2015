@@ -28,6 +28,31 @@ INPUT[TYPE="submit"]
 	   border: none;
 	}
 
+INPUT[type="button"]
+{
+    background-color:red;
+    text-align: center;
+    color:white;
+    font-size:25pt;
+    font-weight: bold;
+    border:3pt;
+    border-color: black;
+    border-style: groove;
+}
+
+INPUT[TYPE="button"]:hover
+{
+    background-color:midnightblue;
+    color:white;
+    font-size:25pt;
+    font-weight: bold;
+    text-align: center;
+    border:3pt;
+    border-color: black;
+    border-style: groove;
+}
+
+
 table.login{
 	table-align:center;
 	background-color: red;

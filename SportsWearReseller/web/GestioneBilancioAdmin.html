@@ -3,8 +3,8 @@
 <html>
 	<head>
 		<title> Gestione Bilancio </title>
-		<script type="text/javascript" src ="Generale.js"></script>
-		<link rel="stylesheet" type="text/css" href ="mioStile.css">
+		<script type="text/javascript" src ="css/Generale.js"></script>
+		<link rel="stylesheet" type="text/css" href ="css/mioStile.css">
 	</head>
 	<body>
 	<div id = "header">
@@ -12,18 +12,39 @@
 	<tr>
 		<td>
 		
-			<img id="logo" src="logo.jpg" width="180" height="120" onclick="home()">
+			<img id="logo" src="grafica/logo.jpg" width="180" height="120" onclick="home()">
 		
 		</td>
 		<td>
-		<img src="intestazioneBilancio.jpg" width="500" height="120">
+		<img src="grafica/intestazioneBilancio.jpg" width="500" height="120">
 		</td>
+                <td>
+                    <form>
+                        <h3 class="testa"> Ricerca Transazione <input type="text" value="ricerca" >  <input type="submit" name="cerca" value="cerca">
+                    </form>
+                    
+                    
+                </td>
 		</table>
 		
 	</div>
 	<div id = "main">
 	</div>
 	<div id = "sidebar">
+            <form method="get" > 
+                <table class="admin2">
+                    <tr>
+                       <td>
+                             <input type="button" name="statistiche" value ="Statistiche">
+                       </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             <input type="button" name="bilancio" value ="Bilancio">
+                        </td>
+                     </tr>
+                 </table>
+            </form>
 	</div>
 	<div id = "footer">
 	</div>
