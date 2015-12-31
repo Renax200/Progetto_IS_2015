@@ -2,11 +2,35 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>servlet.LoginServlet</servlet-class>
+        <servlet-class>servlet.GestoneAccount.LoginServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreateAccountServlet</servlet-name>
-        <servlet-class>servlet.CreateAccountServlet</servlet-class>
+        <servlet-class>servlet.GestoneAccount.CreateAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaAccountServlet</servlet-name>
+        <servlet-class>servlet.GestoneAccount.VisualizzaAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaMagazzinoServlet</servlet-name>
+        <servlet-class>servlet.GestioneMagazzino.VisualizzaMagazzinoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaOrdiniServlet</servlet-name>
+        <servlet-class>servlet.GestioneOrdini.VisualizzaOrdiniServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaClientiServlet</servlet-name>
+        <servlet-class>servlet.GestioneClienti.VisualizzaClientiServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaBilancioServlet</servlet-name>
+        <servlet-class>servlet.GestioneBilancio.VisualizzaBilancioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaHomeServlet</servlet-name>
+        <servlet-class>servlet.GestoneAccount.VisualizzaHomeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -15,6 +39,30 @@
     <servlet-mapping>
         <servlet-name>CreateAccountServlet</servlet-name>
         <url-pattern>/CreateAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaAccountServlet</servlet-name>
+        <url-pattern>/VisualizzaAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaMagazzinoServlet</servlet-name>
+        <url-pattern>/VisualizzaMagazzinoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaOrdiniServlet</servlet-name>
+        <url-pattern>/VisualizzaOrdiniServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaClientiServlet</servlet-name>
+        <url-pattern>/VisualizzaClientiServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaBilancioServlet</servlet-name>
+        <url-pattern>/VisualizzaBilancioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaHomeServlet</servlet-name>
+        <url-pattern>/VisualizzaHomeServlet</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

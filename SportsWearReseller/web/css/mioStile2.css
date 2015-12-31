@@ -5,12 +5,23 @@ h3.login {
 	font-family:Calibri;
 }
 
-h3.admin{
-	color:red;
+h4.admin{
+	color:white;
 	font-family:Calibri;
-	text-align:center;
+	text-align:left;
 }
 
+h3.main{
+    font-family:Calibri;
+    color:black;
+}
+
+h3.testa{
+    color:white;
+    font-family:Calibri;
+    font-size: 14pt;
+    
+}
 
 INPUT[TYPE="submit"]:hover
 	{ background-color:midnightblue;
@@ -27,7 +38,13 @@ INPUT[TYPE="submit"]
 	   font-weight: bold;
 	   border: none;
 	}
-
+        td.utente{
+            color:red;
+            font-weight: bold; 
+            font-size: 20pt;
+            text-align: center;
+        }
+        
 INPUT[type="button"]
 {
     background-color:red;
@@ -52,6 +69,19 @@ INPUT[TYPE="button"]:hover
     border-style: groove;
 }
 
+INPUT[TYPE="button"]:focus
+{
+    background-color:midnightblue;
+    color:white;
+    font-size:25pt;
+    text-align: center;
+    font-weight: bold;
+    border:3pt;
+    border-color: black;
+    border-style: groove;
+   
+}
+  
 
 table.login{
 	table-align:center;
@@ -64,38 +94,60 @@ table.admin{
 	
        
 	}
+ table.admin2{
+	margin-left: 20pt;
+        margin-top: 10pt;
+	
+       
+	}
+    table.admin3{
+	
+        margin-top: 40pt;
+	
+       
+	}
 
 #header{
 	background-color: red; position: fixed;
-	width: 100%; height: 25%; top:0; right: 0;
-	left: 0;	
+	width: 100%; height: 18%; top: 0; right: 0;
+	 left: 0; z-index: 4;	
 }
 
 #main { 
-	position:fixed;
-	width: 60%; height:40%;
-	top: 25%; right: 0; left:30%;
-    font-family: Calibri;
-    color:red;
+	position:absolute;
+	overflow:visible;
+	width: 75%; height:60%;
+	top: 18%; right: 0%; left:15% ;
+        font-family: Calibri;
+        color:red;
 	padding: 4px;
 	padding-left:10%;
-	
+        z-index: 1;
  }
-
+ #mainUtente{
+     position:fixed;
+	overflow:visible;
+	width: 75%; height:60%;
+	top: 18%; right: 0; left:0% ;
+        font-family: Calibri;
+        color:red;
+	padding: 4px;
+        padding-top: 50px;
+	padding-left:10%;
+ }
 #sidebar { 
-	width: 30%; height: 75%;
-	position:behind;
-	right: 55%; left: 0%; top:25%;
-    font-family: Calibri;
-	color:red;
+	position: fixed;
+	width: 15%; height: 100%;
+	right: 55%; left: 0%; top:18%; bottom: 30%;
+        font-family: Calibri;
+	padding: 8px;
+	padding-right:5px;
+        background-color:red;
+        z-index: 3;
 	 }
 	 
 	 
-#footer{
-	width:100%; margin:0pt; background-color:red; color:white; padding:40px ;
-	font-family: Calibri;
-	font-weight:bold;
-}
+
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
