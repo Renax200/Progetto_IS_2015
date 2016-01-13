@@ -1,82 +1,87 @@
-<%-- 
-    Document   : GestioneOrdiniVenditore
-    Created on : 31-dic-2015, 14.17.41
-    Author     : carfo
---%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="Entità.Prodotto"%>
 <%@page import="Entità.Account"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  
     pageEncoding="ISO-8859-1"%>  
 <% Account a = (Account) session.getAttribute("account"); %>
-<% ArrayList<Account> listaClienti = (ArrayList<Account>) session.getAttribute("clienti");%>
+
 <html>
     <head>
-        <title>SWR|Clienti|<%=a.getNome()%></title>
+        <title>SWR|Magazzino| <%=a.getNome()%></title>
                 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel="stylesheet" type="text/css" href="css/mioStile.css">
                 <script language="javascript" type ="text/javascript" src="jscript/Admin.js"></script>
     </head>
+	
 	<body>
 	
 	 <div id="header">
              <table>
                       <tr>
                           <td rowspan="8">
-                           <form action="VisualizzaHomeServlet">
+                          <form action="VisualizzaHomeServlet">
                             <input type="image" src="grafica/logo.jpg" width="150" height="100" >
-                           </form>
+                              </form>
                          </td>
                          <td>
-                             <img id="int" src="grafica/clienti.jpg" width="280" height="80">
+                             <img id="int" src="grafica/magazzino.jpg" width="280" height="80">
                          </td>
-                         <td width="10%">
+                        <td>
                             
-                             <h4 class="admin">Ricerca Cliente</h4>
+                             <h4 class="admin">Ricerca Prodotto</h4>
                         </td>
-                        <td width="75%">
+                        <td>
                              <form id="ricerca" action="">
                              <input type="text" name="ricerca" required="required" >
                              <input type ="submit" value="Cerca">
                             </form>
                         </td>
-                        <td width="65%">
+                        <td>
                         <form method="post" action="LogoutServlet">
 			<input type="image" id = "lout" src="grafica/logoutout.jpg" name="ordini" width="60" height="60"
 				onmouseover="cambioOver('lout','logout','over')" onmouseout="cambioOut('lout','logout','out')">
                         </form>
                         </td>
+                        <td>
+                         <form metod="post" action="InsertProdottoServlet">
+                            <input type="submit" value="+ Aggiungi nuovo Prodotto">
+                         </form>
+                        </td>
+                 </tr>
                       </tr>
                   </table>
-            
+                </center>
 	 </div>
-            <div id="TestaTabella">
+         <div id="TestaTabella">
              
-             <table   width="84%" cellspacing="3">
-                 <tr>
-                 <td width="10%"><h4 class="admin2">Cognome</h4></td> 
-                 <td width="20%"><h4 class="admin2">Nome</h4></td> 
-                 <td width="40%"><h4 class="admin2">Email</h4></td> 
-                 <td width="20%"><h4 class="admin2">Società</h4></td> 
-                 </tr>
-             </table>
+             <h2 class="admin"> Form inserimento Prodotto </h2>
          </div> 
-	 <div id="main">
-             <table width="105%" cellspacing="3">
-             <% for(Account cli:listaClienti){ %>
-             <tr>
-                 <td width="10%"><h4 class="tab"><%=cli.getCognome()%> </h4></td> 
-                 <td width="20%"><h4 class="tab"><%=cli.getNome() %></h4></td> 
-                 <td width="40%"><h4 class="tab"><%=cli.getEmail()%></h4></td> 
-                 <td width="20%"><h4 class="tab"><%=cli.getSocieta()%></h4></td>  
-             </tr>
-                <% } %>
-             </table>
+         <div id="main">
+             <center>
+                 <table>
+                            <form method="post" action="InsertProdottoServlet"
+                                  
+                                  <tr><td> <h4 class="tab2">idProdotto</h4> </td><td><input type="text" name="idProdotto" required="required" ></td></tr>
+                                  <tr><td> <h4 class="tab2">Nome </h4></td><td><input type="text" name="nome" required="required"></td></tr>
+                                  <tr> <td><h4 class="tab2">Descrizione</h4> </td><td><TEXTAREA name="descrizione" rows="6" cols="24"></textarea></td></tr>    
+                                  <tr><td> <h4 class="tab2">Quantità Pezzi</h4></td><td> <input type="text" name="numero_pezzi" required="required"><td></tr>
+                                  <tr><td> <h4 class="tab2">Prezzo (singola unità)</h4></td><td><input type="text" name="prezzo" required="required"><td></tr>
+                                  <tr><td> <h4 class="tab2">Categoria</h4> </td><td> <select size="1" name="categoria">
+                                                 <option>Completini</option><
+                                                 <option>Tute</option>
+                                                 <option>Palloni</option>
+                                                 <option>Stampe</option>
+                                                 <option>Scarpette</option>  
+                                                 </select></td></tr> 
+                                                <tr><td><td><input type="submit" value="Aggiungi">  <input type="reset" value="Annulla"></td></tr>
+				</form>
+                 </table>
+            </center>
          </div>
+	 
 	 <div id="sidebar">
-             
              <table> 
                  <tr>
-                        <td colspan="2"> <h4 class="admin"> Benvenuto <%=a.getNome()%> </h4></td>
+                        <td colspan="2"><h4 class="admin"> Benvenuto <%=a.getNome()%></h4></td>
                  </tr>
                  <tr>
                     <td>
@@ -90,7 +95,8 @@
                 <tr>
                      <td>
                         <form action="VisualizzaClientiServlet">
-                        <input type="image"  id = "cli" src="grafica/clienteover.jpg" name ="clienti" width="60" height="60">
+                        <input type="image"  id = "cli" src="grafica/clienteout.jpg" name ="clienti" width="60" height="60"
+                            onmouseover="cambioOver('cli','cliente','over')" onmouseout="cambioOut('cli','cliente','out')">
                         </form>
                      </td>
                 <td><h4 class="admin">CLIENTI</h4></td>
@@ -98,8 +104,7 @@
                 <tr>
 		<td>
                     <form action="VisualizzaMagazzinoServlet">
-                        <input type="image" id = "mgz" src="grafica/magazzinoout.jpg" width="60" height="60"
-                               onmouseover="cambioOver('mgz','magazzino','over')" onmouseout="cambioOut('mgz','magazzino','out')">
+                        <input type="image" id = "mgz" src="grafica/magazzinoover.jpg" width="60" height="60">
                      </form>
                 </td>
                 <td><h4 class="admin">MAGAZZINO</h4></td>
@@ -118,8 +123,9 @@
                     <tr>
                         <td>
                             <form action="VisualizzaOrdiniServlet">
-			<input type="image" id = "ord" src="grafica/ordiniout.jpg" name="ordini" width="60" height="60" 
-                                onmouseover="cambioOver('ord','ordini','over')" onmouseout="cambioOut('ord','ordini','out')">
+			<input type="image" id = "ord" src="grafica/ordiniout.jpg" name="ordini" width="60" height="60"
+				onmouseover="cambioOver('ord','ordini','over')" onmouseout="cambioOut('ord','ordini','out')"
+                               >
                             </form>
 			</td>
                         <td>
@@ -127,11 +133,9 @@
 			</td>
 		    </tr>
              </table>
-                 
 	 </div>
 	 
     </body>
 	
 	
 </html>
-

@@ -18,18 +18,48 @@
                       <tr>
                           <td rowspan="8">
                             <form action="VisualizzaHomeServlet">
-                            <input type="image" src="grafica/logo.jpg" width="150" height="100"  >
+                            <input type="image" src="grafica/logo.jpg" width="150" height="100">
                               </form>
                          </td>
                          <td>
                              <img id="int" src="grafica/utente.jpg" width="280" height="80">
                          </td>
+                         <td width="65%">
+                        <form method="post" action="LogoutServlet">
+                            <input align="right" type="image" id = "lout" src="grafica/logoutout.jpg" name="ordini" width="60" height="60"
+				onmouseover="cambioOver('lout','logout','over')" onmouseout="cambioOut('lout','logout','out')">
+                        </form>
                       </tr>
                   </table>
                 </center>
 	 </div>
-	 <div id="main">
-             <h3><%= a.getNome()%></h3>
+            <div id ="TestaTabella">
+                
+            </div>   
+	 <div id="mainAccount">
+             
+             <table  cellspacing="10" class="admin3">
+                 <tr>
+                     <td colspan="3" align="right"><img align="left" src="grafica/avatar.jpg" width="120" height="120"></td>
+                     <td rowSpan="5"><img src="grafica/logo2.jpg" width="420" height="320"> </td>
+                 </tr>
+                 <tr>
+                     <td><h3>Nome<h3></td><td><h4><%=a.getNome()%></h3></td>
+                 </tr>
+                 <tr>
+                     <td><h3>Cognome<h3></td><td><h4><%=a.getCognome()%></h3></td>
+                 </tr>
+                 <tr>
+                     <td><h3>E-mail</h3></td><td><h4><%=a.getEmail()%></h4></td>
+                 </tr>
+                  <tr>
+                      <td><h3>Password<h3></td><td><h4><%=a.getPassword()%></h4></td>
+                 </tr>
+                 <tr>
+                     <td><h3>Nome Società<h3></td><td><h4><%=a.getSocieta()%><h4></td>
+                 </tr>
+             </table>
+             
 	 <div id="sidebar">
              <table> 
                  <tr>

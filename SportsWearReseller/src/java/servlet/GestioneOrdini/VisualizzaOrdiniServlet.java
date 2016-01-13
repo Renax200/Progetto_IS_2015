@@ -37,8 +37,15 @@ public class VisualizzaOrdiniServlet extends HttpServlet {
         if(session!=null)  
         session.setAttribute("account", session.getAttribute("account"));  
        
+        Account account = (Account) session.getAttribute("account");
+        if(account.getTipo().equals("Venditore")){
         RequestDispatcher rd=request.getRequestDispatcher("GestioneOrdiniVenditore.jsp");    
-        rd.forward(request,response);    
+        rd.forward(request,response);
+        }
+        else{
+            RequestDispatcher rd=request.getRequestDispatcher("GestioneOrdiniCliente.jsp");    
+            rd.forward(request,response);
+        }
      
     }
 

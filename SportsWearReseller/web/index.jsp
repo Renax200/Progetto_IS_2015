@@ -1,8 +1,11 @@
 <%-- 
     Document   : index
-    Created on : 18-dic-2015, 23.22.47
+    Created on : 11-gen-2016, 15.08.39
     Author     : carfo
 --%>
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"  
+    pageEncoding="ISO-8859-1"%> 
 <!DOCTYPE html>
 <html>
 	<head>
@@ -38,7 +41,7 @@
 				<form method="post" action="CreateAccountServlet" >
 					
 				<p> Nome <input type="text" name="nome" required="required" > Cognome <input type="text" name="cognome" required="required">
-                                <p> Nome Societ&agrave;    <input type="text" name="nome_societÃ " required="required">
+                                <p> Nome Societ&agrave;    <input type="text" name="nome_società" required="required">
                                 <p> Partita Iva <input type="text" name="partita_iva" required="required">
 				<p> E-mail    <input type="text" name="email2" required="required">
 				<p> Password  <input type="password" name="pass2">

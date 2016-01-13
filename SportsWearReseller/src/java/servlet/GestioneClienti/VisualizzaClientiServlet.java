@@ -5,6 +5,7 @@
  */
 package servlet.GestioneClienti;
 
+import Managers.ClientiManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -35,7 +36,7 @@ public class VisualizzaClientiServlet extends HttpServlet {
         HttpSession session = request.getSession(true);  
         if(session!=null)  
         session.setAttribute("account", session.getAttribute("account"));  
-       
+        session.setAttribute("clienti", ClientiManager.listaClienti());
         RequestDispatcher rd=request.getRequestDispatcher("GestioneClientiVenditore.jsp");    
         rd.forward(request,response);    
      

@@ -1,11 +1,11 @@
-<%-- 
+ <%-- 
     Document   : GestioneOrdiniVenditore
     Created on : 31-dic-2015, 14.17.41
     Author     : carfo
 --%>
 <%@page import="Entità.Account"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  
-    pageEncoding="ISO-8859-1"%>  
+    pageEncoding="ISO-8859-1"%> 
 <% Account a = (Account) session.getAttribute("account"); %>
 
 <html>
@@ -29,10 +29,18 @@
                          <td>
                              <img id="int" src="grafica/ordini.jpg" width="280" height="80">
                          </td>
+                          <td width="65%">
+                        <form method="post" action="LogoutServlet">
+                            <input align="right" type="image" id = "lout" src="grafica/logoutout.jpg" name="ordini" width="60" height="60"
+				onmouseover="cambioOver('lout','logout','over')" onmouseout="cambioOut('lout','logout','out')">
+                        </form>
                       </tr>
                   </table>
                 </center>
 	 </div>
+            <div id="TestaTabella">
+                
+            </div>
 	 <div id="main">
              <h3><%= a.getNome()%></h3>
 	 <div id="sidebar">

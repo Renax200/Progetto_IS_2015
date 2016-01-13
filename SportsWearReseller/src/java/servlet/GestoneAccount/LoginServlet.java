@@ -35,8 +35,8 @@ public class LoginServlet extends HttpServlet {
         String n=request.getParameter("email");    
         String p=request.getParameter("pass"); 
         
-        AccountManager accountManager = new AccountManager();
-        Account account = accountManager.logIn(n, p);
+       
+         Account account = AccountManager.logIn(n, p);
           
         HttpSession session = request.getSession(true);  
         if(session!=null)  

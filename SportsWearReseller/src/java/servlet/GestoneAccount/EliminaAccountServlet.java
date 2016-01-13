@@ -6,6 +6,7 @@
 package servlet.GestoneAccount;
 
 import Entità.Account;
+import Managers.AccountManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author carfo
  */
-public class VisualizzaHomeServlet extends HttpServlet {
+public class EliminaAccountServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,23 +31,23 @@ public class VisualizzaHomeServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
- 
-         protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
-        HttpSession session = request.getSession(true);  
-        if(session!=null)  
-        session.setAttribute("account", session.getAttribute("account"));  
-        Account a = (Account) session.getAttribute("account");
-        if(a.getTipo().equals("Venditore")){
-        RequestDispatcher rd=request.getRequestDispatcher("AdminLoginHome.jsp");    
-        rd.forward(request,response);    
-        }
-        else
-        {
-            RequestDispatcher rd=request.getRequestDispatcher("ClienteLoginHome.jsp");
-            rd.forward(request,response);  
-        }
-   }
-}
+        
+            HttpSession session = request.getSession(true);  
+             
+            session.setAttribute("account", session.getAttribute("account")); 
+            Account a = (Account) session.getAttribute("account");
+            
+            AccountManager.eliminaAccount(a);
+            
+                RequestDispatcher rd=request.getRequestDispatcher("index.jsp");    
+                rd.forward(request,response);
+            }
+    
+    }
+
+   
+
+

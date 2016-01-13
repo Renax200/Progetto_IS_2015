@@ -22,16 +22,23 @@
                       <tr>
                           <td rowspan="8">
                             <form action="VisualizzaHomeServlet">
-                            <input type="image" src="grafica/logo.jpg" width="150" height="100"  >
+                            <input type="image" src="grafica/logo.jpg" width="150" height="100">
                               </form>
                          </td>
                          <td>
                              <img id="int" src="grafica/bilancio.jpg" width="280" height="80">
                          </td>
+                         <td width="65%">
+                        <form method="post" action="LogoutServlet">
+                            <input align="right" type="image" id = "lout" src="grafica/logoutout.jpg" name="ordini" width="60" height="60"
+				onmouseover="cambioOver('lout','logout','over')" onmouseout="cambioOut('lout','logout','out')">
+                        </form>
                       </tr>
                   </table>
-                </center>
 	 </div>
+            <div id="TestaTabella">
+                
+            </div>
 	 <div id="main">
              <h3><%= a.getNome()%></h3>
 	 <div id="sidebar">

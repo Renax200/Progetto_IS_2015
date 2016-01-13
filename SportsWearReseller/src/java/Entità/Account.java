@@ -5,6 +5,8 @@
  */
 package Entità;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author carfo
@@ -12,6 +14,7 @@ package Entità;
 public class Account {
     
     private String email,password,nome,cognome,societa,partitaIva,tipo;
+    private Carrello mioCarrello;
 
     public Account(String email, String password, String nome, String cognome, String societa, String partitaIva, String tipo) {
         this.email = email;
@@ -21,10 +24,11 @@ public class Account {
         this.societa = societa;
         this.nome = nome;
         this.cognome = cognome;
+        this.mioCarrello = new Carrello();
     }
-  public Account() {
+        public Account() {
       
-    }
+         }
 
     public String getEmail() {
         return email;
@@ -83,5 +87,8 @@ public class Account {
         this.cognome = cognome;
     }
     
+    public Carrello getMioCarrello(){
+        return this.mioCarrello;
+    }
     
 }

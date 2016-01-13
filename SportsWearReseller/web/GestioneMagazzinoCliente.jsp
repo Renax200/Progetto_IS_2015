@@ -1,37 +1,53 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Managers.MagazzinoManager"%>
+<%@page import="Entità.Prodotto"%>
 <%@page import="Entità.Account"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  
     pageEncoding="ISO-8859-1"%>  
 <% Account a = (Account) session.getAttribute("account"); %>
+<% ArrayList<Prodotto> lista = (ArrayList<Prodotto>) session.getAttribute("listaCat"); %>
 <html>
-	<head>
-		<title>SWR |Home| <%= a.getNome()%></title>
-		<script type="text/javascript" src ="jscript/Cliente.js"></script>
-		<link rel="stylesheet" type="text/css" href ="css/mioStile2.css">
-	</head>
+    <head>
+        <title>SWR|Magazzino| <%=a.getNome()%></title
+                <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="css/mioStile.css">
+                <script language="javascript" type ="text/javascript" src="jscript/Admin.js"></script>
+    </head>
+	
 	<body>
-          
-	<div id = "header">
-              <table  cellspacing="5">
-                <tr>
-                    <td>  
-                        <form action="VisualizzaHomeServlet">
-                        <input type="image" alt ="Home"src="grafica/logo.jpg" width="150" height="100" onclick="cambia('int','home')">
-                        </form>
-                    </td>
-                    <td> <img id="int" src="grafica/home.jpg" width="280" height="80"></td>
-                    <td><img src="grafica/sfondo.jpg" width="600" height="100"></td>
-                    <td>
+	
+	 <div id="header">
+             <table>
+                      <tr>
+                         <td rowspan="8">
+                          <form action="VisualizzaHomeServlet">
+                            <input type="image" src="grafica/logo.jpg" width="150" height="100" >
+                              </form>
+                         </td>
+                         <td>
+                             <img id="int" src="grafica/magazzino.jpg" width="280" height="80">
+                         </td>
+                        <td>
+                             <h4 class="admin">Ricerca Prodotto</h4>
+                        </td>
+                        <td>
+                             <form id="ricerca" action="">
+                             <input type="text" name="ricerca" required="required" >
+                             <input type ="submit" value="Cerca">
+                            </form>
+                        </td>
+                        <td>
                         <form action="VisualizzaCarrelloServlet">
                             <input type="image" alt="Carrello" id = "car" src="grafica/carrelloout.jpg" name="carrello" width="40" height="40"
                             onmouseover="cambioOver('car','carrello','over')" onmouseout="cambioOut('car','carrello','out')">
                         </form>
-                    </td>
-                    <td>
+                         </td>
+                        <td>
                         <form action="VisualizzaAccountServlet">
                            <input type="image" alt="Account" id = "utn" src="grafica/utenteout.jpg" name="utente" width="40" height="40"
                                   onmouseover="cambioOver('utn','utente','over')" onmouseout="cambioOut('utn','utente','out')">    
                         </form>
-                    </td>
+                        </td>
                     <td>
                         <form action="VisualizzaOrdiniServlet">
 			<input type="image" id = "ord" src="grafica/ordiniout.jpg" name="ordini" width="40" height="40"
@@ -46,51 +62,37 @@
 		    </td>
                 </tr>
             </table>
-                            
-        </div>
-            <div id ="TestaTabella">
-                
-            </div>
-	<div id = "main">
-              v<br>
-             f
-             c
-             f
-             c
-             we
-             c<br>
-             we
-             c
-             we
-             c
-             e<br>
-               c<br>  c<br>  c<br>  c<br>  c<br>  c<br>  c<br>>
-               c<br>
-             v<br>
-             fe<br>
-               c<br>  c<br>  c<br>  c<br>  c<br>  c<br>  c<br>>
-               c<br>
-             v<br>
-             ce<br>
-               c<br>  c<br>  c<br>  c<br>  c<br>  c<br>  c<br>>
-               c<br>
-             v<br>
-             f
-             ce<br>
-               c<br>  c<br>  c<br>  c<br>  c<br>  c<br>  c<br>>
-               c<br>
-             v<br>
-             we
-             c<br>
-             we
-             c
-             we
-             c
-             e<br>
-	</div>
-            
-            
-            
+               
+                </center>
+	 </div>
+         <div id="TestaTabella">
+             
+             <table   width="84%" cellspacing="3">
+                 <tr>
+                 <td width="10%"><h4 class="admin2">Numero</h4></td> 
+                 <td width="20%"><h4 class="admin2">Nome Prodotto</h4></td> 
+                 <td width="40%"><h4 class="admin2">Descrizione</h4></td> 
+                 <td width="10%"><h4 class="admin2">Prezzo</h4></td>
+                 <td width="10%"><h4 class="admin2">Quantità Disponibili</h4></td>
+                 </tr>
+             </table>
+         </div> 
+         <div id="main">
+             
+            <table   width="105%" cellspacing="3">
+             <% for(Prodotto p : lista){ %>
+             <tr>
+                 <td width="10%"><h4 class="tab"><%=p.getIdProdotto() %></h4></td> 
+                 <td width="20%"><h4 class="tab"><%=p.getNome()%></h4></td> 
+                 <td width="40%"><h4 class="tab"><BLOCKQUOTE><%=p.getDescrizione()%></BLOCKQUOTE></h4></td> 
+                 <td width="10%"><h4 class="tab"><%=p.getPrezzo()%></h4></td>
+                 <td width="10%"><h4 class="tab"><%=p.getNumeroPezzi()%></h4></td>  
+             </tr>
+                <% } %>
+            </table>
+         </div>
+	 
+	    
 	<div id = "sidebar">
 		<h4 class="admin">SELEZIONA CATEGORIA</h4>
 		<table>
@@ -153,6 +155,8 @@
 		</table>
 	</div>
 	
+	 
+    </body>
 	
-	</body>
+	
 </html>

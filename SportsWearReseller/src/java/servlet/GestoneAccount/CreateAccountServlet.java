@@ -38,8 +38,8 @@ public class CreateAccountServlet extends HttpServlet {
         String tipo="Cliente";
         
         if(pass.equals(passDiConferma)){
-            AccountManager accountManager = new AccountManager();
-            int r = accountManager.creaAccount(nome,cognome,email,pass,societa,partitaIva,tipo);
+            
+            int r = AccountManager.creaAccount(nome,cognome,email,pass,societa,partitaIva,tipo);
             
             if(r==1){
             Account account = new Account(email,pass,nome,cognome,societa,partitaIva,tipo);

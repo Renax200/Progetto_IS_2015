@@ -32,6 +32,42 @@
         <servlet-name>VisualizzaHomeServlet</servlet-name>
         <servlet-class>servlet.GestoneAccount.VisualizzaHomeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>servlet.GestoneAccount.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminaAccountServlet</servlet-name>
+        <servlet-class>servlet.GestoneAccount.EliminaAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertProdottoServlet</servlet-name>
+        <servlet-class>servlet.GestioneMagazzino.InsertProdottoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaInserimento</servlet-name>
+        <servlet-class>servlet.GestioneMagazzino.VisualizzaInserimento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaCategoriaServletCompletini</servlet-name>
+        <servlet-class>servlet.GestioneMagazzino.VisualizzaCategoriaServletCompletini</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaCategoriaServletTute</servlet-name>
+        <servlet-class>servlet.GestioneMagazzino.VisualizzaCategoriaServletTute</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaCategoriaServletPalloni</servlet-name>
+        <servlet-class>servlet.GestioneMagazzino.VisualizzaCategoriaServletPalloni</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaCategoriaServletScarpette</servlet-name>
+        <servlet-class>servlet.GestioneMagazzino.VisualizzaCategoriaServletScarpette</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaCategoriaServletStampe</servlet-name>
+        <servlet-class>servlet.GestioneMagazzino.VisualizzaCategoriaServletStampe</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -64,7 +100,43 @@
         <servlet-name>VisualizzaHomeServlet</servlet-name>
         <url-pattern>/VisualizzaHomeServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminaAccountServlet</servlet-name>
+        <url-pattern>/EliminaAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertProdottoServlet</servlet-name>
+        <url-pattern>/InsertProdottoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaInserimento</servlet-name>
+        <url-pattern>/VisualizzaInserimento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaCategoriaServletCompletini</servlet-name>
+        <url-pattern>/VisualizzaCategoriaServletCompletini</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaCategoriaServletTute</servlet-name>
+        <url-pattern>/VisualizzaCategoriaServletTute</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaCategoriaServletPalloni</servlet-name>
+        <url-pattern>/VisualizzaCategoriaServletPalloni</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaCategoriaServletScarpette</servlet-name>
+        <url-pattern>/VisualizzaCategoriaServletScarpette</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaCategoriaServletStampe</servlet-name>
+        <url-pattern>/VisualizzaCategoriaServletStampe</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

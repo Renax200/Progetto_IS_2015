@@ -4,108 +4,29 @@
  * and open the template in the editor.
  */
 package Managers;
-  
+
 import Entità.Account;
+import Entità.Prodotto;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
- * @author Carfora Andrea
+ * @author carfo
  */
-public class AccountManager {
-
-    private static String login ="select * from account where email=? and password=?"; 
-    private static String creaAccount="INSERT INTO magazzino.account (email, password, nome, cognome, nome_società, partita_iva, tipo)VALUES(?,?,?,?,?,?,?)";     
-    private static String eliminaAccount="DELETE FROM magazzino.account WHERE email=";
+public class MagazzinoManager {
     
-    
-    
-    public static Account logIn(String email, String pass){
+    private  static String inserisciProdotto="INSERT INTO magazzino.prodotto(idProdotto,nome,descrizione,numero_pezzi,prezzo,categoria)VALUES(?,?,?,?,?,?)";
+    private  static String listaProdotti ="SELECT * FROM magazzino.prodotto ORDER BY idProdotto ASC";
+    private  static String listaProdottiCategoria ="SELECT * FROM magazzino.prodotto WHERE categoria=? ORDER BY idProdotto ASC";
      
-        Connection conn = null;  
-        PreparedStatement ps = null;  
-        ResultSet rs = null;  
-        String mail=null;
-        String passr=null;
-        String nome=null;
-        String cognome=null;
-        String societa=null;
-        String partitaIva=null;
-        String tipo=null;
-  
-        String url = "jdbc:mysql://localhost:3306/";  
-        String dbName = "magazzino";  
-        String driver = "com.mysql.jdbc.Driver";  
-        String userName = "root";  
-        String password = "esameIs";  
-        
-        try {  
-            Class.forName(driver).newInstance();  
-            conn = DriverManager.getConnection(url + dbName, userName, password);  
-            
-            String sql = login;
-            Statement st = conn.createStatement();
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, email);  
-            ps.setString(2, pass);  
-            rs = ps.executeQuery();
-          
-              Account account = new Account();
-            while(rs.next()){
-                 mail = rs.getString("email");
-                 passr = rs.getString("password");
-                 nome = rs.getString("nome");
-                 cognome = rs.getString("cognome");
-                 partitaIva = rs.getString("partita_iva");
-                 societa = rs.getString("nome_società");
-                 tipo = rs.getString("tipo");
-            }
-            
-                account.setEmail(mail);
-                account.setPassword(passr);
-                account.setNome(nome);
-                account.setCognome(cognome);
-                account.setPartitaIva(partitaIva);
-                account.setSocieta(societa);
-                account.setTipo(tipo);
-            
-           return account;
-           
-        } catch (Exception e) {  
-            System.out.println(e);  
-        } finally {  
-            if (conn != null) {  
-                try {  
-                    conn.close();  
-                } catch (SQLException e) {  
-                    e.printStackTrace();  
-                }  
-            }  
-            if (ps != null) {  
-                try {  
-                    ps.close();  
-                } catch (SQLException e) {  
-                    e.printStackTrace();  
-                }  
-            }  
-            if (rs != null) {  
-                try {  
-                    rs.close();  
-                } catch (SQLException e) {  
-                    e.printStackTrace();  
-                }  
-            }  
-        }  
-        return null;
-    }
-    
-    
-    public static int creaAccount(String nome,String cognome,String email,String pass,String societa,String partitaIva,String tipo){
+    public static int inserisciProdotto(int idProdotto,String nome,String descrizione,
+            int numero_pezzi,float prezzo,String categoria){
         
         Connection conn = null;  
         PreparedStatement ps = null;  
@@ -122,16 +43,16 @@ public class AccountManager {
            conn = DriverManager.getConnection(url + dbName, userName, password);  
                 
            Statement st = conn.createStatement();
-           String sql = creaAccount;
+           String sql = inserisciProdotto;
                   
            ps = conn.prepareStatement(sql);
-           ps.setString(1, email);
-           ps.setString(2, pass);
-           ps.setString(3, nome);
-           ps.setString(4, cognome);
-           ps.setString(5, societa);
-           ps.setString(6, partitaIva);
-           ps.setString(7, tipo);
+           ps.setInt(1, idProdotto);
+           ps.setString(2, nome);
+           ps.setString(3, descrizione);
+           ps.setInt(4, numero_pezzi);
+           ps.setFloat(5, prezzo);
+           ps.setString(6, categoria);
+          
        
            res = ps.executeUpdate();
 
@@ -165,27 +86,39 @@ public class AccountManager {
         return 0;
     }
     
-    public static void eliminaAccount(Account account){
-        Connection conn = null;  
+    public static ArrayList<Prodotto> listaProdotti(){
+         Connection conn = null;  
         PreparedStatement ps = null;  
-        ResultSet rs = null;
-        int res;
+        
+        ResultSet rs = null;  
+  
         String url = "jdbc:mysql://localhost:3306/";  
         String dbName = "magazzino";  
         String driver = "com.mysql.jdbc.Driver";  
         String userName = "root";  
         String password = "esameIs";  
-        
+        ArrayList<Prodotto> prodotti = null;
+        Prodotto p = null;
         try {  
-           Class.forName(driver).newInstance();  
-           conn = DriverManager.getConnection(url + dbName, userName, password);  
-                
-           Statement st = conn.createStatement();
-           String sql = eliminaAccount+"\""+account.getEmail()+"\"";
-                  
+            Class.forName(driver).newInstance();  
+            conn = DriverManager.getConnection(url + dbName, userName, password);  
+            String sql = listaProdotti;
+            Statement st = conn.createStatement();
             ps = conn.prepareStatement(sql);
-            res = ps.executeUpdate();
-
+            
+            rs = ps.executeQuery();
+            prodotti = new ArrayList<Prodotto>();
+            
+            while(rs.next()){
+                p = new Prodotto();
+                p.setIdProdotto(rs.getInt("idProdotto"));
+                p.setNome(rs.getString("nome"));
+                p.setDescrizione(rs.getString("descrizione"));
+                p.setNumeroPezzi(rs.getInt("numero_pezzi"));
+                p.setPrezzo(rs.getFloat("prezzo"));
+                p.setCategoria(rs.getString("categoria"));
+                prodotti.add(p);
+            }
            
         } catch (Exception e) {  
             System.out.println(e);  
@@ -211,7 +144,70 @@ public class AccountManager {
                     e.printStackTrace();  
                 }  
             }  
-        } 
+        }  
+        return prodotti;
     }
     
+public static ArrayList<Prodotto> listaProdottiCatogoria(String cat){
+         Connection conn = null;  
+        PreparedStatement ps = null;  
+        ResultSet rs = null;  
+        
+  
+        String url = "jdbc:mysql://localhost:3306/";  
+        String dbName = "magazzino";  
+        String driver = "com.mysql.jdbc.Driver";  
+        String userName = "root";  
+        String password = "esameIs";  
+        ArrayList<Prodotto> prodotti = null;
+        Prodotto p = null;
+        try {  
+            Class.forName(driver).newInstance();  
+            conn = DriverManager.getConnection(url + dbName, userName, password);  
+            String sql = listaProdottiCategoria;
+            Statement st = conn.createStatement();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, cat);
+            rs = ps.executeQuery();
+            prodotti = new ArrayList<Prodotto>();
+            
+            while(rs.next()){
+                p = new Prodotto();
+                p.setIdProdotto(rs.getInt("idProdotto"));
+                p.setNome(rs.getString("nome"));
+                p.setDescrizione(rs.getString("descrizione"));
+                p.setNumeroPezzi(rs.getInt("numero_pezzi"));
+                p.setPrezzo(rs.getFloat("prezzo"));
+                p.setCategoria(rs.getString("categoria"));
+                prodotti.add(p);
+            }
+           
+        } catch (Exception e) {  
+            System.out.println(e);  
+        } finally {  
+            if (conn != null) {  
+                try {  
+                    conn.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if (ps != null) {  
+                try {  
+                    ps.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if (rs != null) {  
+                try {  
+                    rs.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }  
+        return prodotti;
+    }
+   
 }

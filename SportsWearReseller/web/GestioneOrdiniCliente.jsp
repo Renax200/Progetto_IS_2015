@@ -1,16 +1,24 @@
+ <%-- 
+    Document   : GestioneOrdiniVenditore
+    Created on : 31-dic-2015, 14.17.41
+    Author     : carfo
+--%>
 <%@page import="Entità.Account"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  
-    pageEncoding="ISO-8859-1"%>  
+    pageEncoding="ISO-8859-1"%> 
 <% Account a = (Account) session.getAttribute("account"); %>
+
 <html>
-	<head>
-		<title>SWR |Home| <%= a.getNome()%></title>
-		<script type="text/javascript" src ="jscript/Cliente.js"></script>
-		<link rel="stylesheet" type="text/css" href ="css/mioStile2.css">
-	</head>
+    <head>
+        <title>SWR|Ordini|<%=a.getNome()%></title>
+                <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="css/mioStile.css">
+                <script language="javascript" type ="text/javascript" src="jscript/Admin.js"></script>
+    </head>
+	
 	<body>
-          
-	<div id = "header">
+	
+	 <div id = "header">
               <table  cellspacing="5">
                 <tr>
                     <td>  
@@ -18,7 +26,7 @@
                         <input type="image" alt ="Home"src="grafica/logo.jpg" width="150" height="100" onclick="cambia('int','home')">
                         </form>
                     </td>
-                    <td> <img id="int" src="grafica/home.jpg" width="280" height="80"></td>
+                    <td> <img id="int" src="grafica/ordini.jpg" width="280" height="80"></td>
                     <td><img src="grafica/sfondo.jpg" width="600" height="100"></td>
                     <td>
                         <form action="VisualizzaCarrelloServlet">
@@ -34,7 +42,7 @@
                     </td>
                     <td>
                         <form action="VisualizzaOrdiniServlet">
-			<input type="image" id = "ord" src="grafica/ordiniout.jpg" name="ordini" width="40" height="40"
+			<input type="image" id = "ord" src="grafica/ordiniover.jpg" name="ordini" width="40" height="40"
 				onmouseover="cambioOver('ord','ordini','over')" onmouseout="cambioOut('ord','ordini','out')">
                         </form>
 		    </td>
@@ -48,49 +56,12 @@
             </table>
                             
         </div>
-            <div id ="TestaTabella">
+            <div id="TestaTabella">
                 
             </div>
-	<div id = "main">
-              v<br>
-             f
-             c
-             f
-             c
-             we
-             c<br>
-             we
-             c
-             we
-             c
-             e<br>
-               c<br>  c<br>  c<br>  c<br>  c<br>  c<br>  c<br>>
-               c<br>
-             v<br>
-             fe<br>
-               c<br>  c<br>  c<br>  c<br>  c<br>  c<br>  c<br>>
-               c<br>
-             v<br>
-             ce<br>
-               c<br>  c<br>  c<br>  c<br>  c<br>  c<br>  c<br>>
-               c<br>
-             v<br>
-             f
-             ce<br>
-               c<br>  c<br>  c<br>  c<br>  c<br>  c<br>  c<br>>
-               c<br>
-             v<br>
-             we
-             c<br>
-             we
-             c
-             we
-             c
-             e<br>
-	</div>
-            
-            
-            
+	 <div id="main">
+             
+	    
 	<div id = "sidebar">
 		<h4 class="admin">SELEZIONA CATEGORIA</h4>
 		<table>
@@ -153,6 +124,8 @@
 		</table>
 	</div>
 	
+    </body>
 	
-	</body>
+	
 </html>
+

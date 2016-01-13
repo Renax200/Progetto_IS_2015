@@ -6,8 +6,11 @@
 package servlet.GestioneMagazzino;
 
 import Entità.Account;
+import Entità.Prodotto;
+import Managers.MagazzinoManager;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,16 +33,26 @@ public class VisualizzaMagazzinoServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+   
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        PrintWriter out = response.getWriter();    
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession(true);  
+        HttpSession session = request.getSession(true);
+        Account a = (Account) session.getAttribute("account");
+        String cat=request.getParameter("categoria");
         if(session!=null)  
-        session.setAttribute("account", session.getAttribute("account"));  
-       
+        session.setAttribute("account", a);
+        
+        
+        session.setAttribute("lista", MagazzinoManager.listaProdotti());
         RequestDispatcher rd=request.getRequestDispatcher("GestioneMagazzinoVenditore.jsp");    
         rd.forward(request,response);    
+      
+        
+        }
+        
      
     }
 
-}
+

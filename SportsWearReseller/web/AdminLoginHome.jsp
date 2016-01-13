@@ -17,51 +17,26 @@
              <table>
                       <tr>
                           <td rowspan="8">
-                            <img src="grafica/logo.jpg" width="150" height="100" onclick="cambia('int','home')">
+                            <img src="grafica/logo.jpg" width="150px" height="100px" onclick="cambia('int','home')">
                          </td>
                          <td>
-                             <img id="int" src="grafica/home.jpg" width="280" height="80">
+                             <img id="int" src="grafica/home.jpg" width="280px" height="80px">
                          </td>
+                          <td width="65%">
+                        <form method="post" action="LogoutServlet">
+                            <input align="right" type="image" id = "lout" src="grafica/logoutout.jpg" name="ordini" width="60" height="60"
+				onmouseover="cambioOver('lout','logout','over')" onmouseout="cambioOut('lout','logout','out')">
+                        </form>
+		    </td>
                       </tr>
                   </table>
                 </center>
 	 </div>
+            <div id ="TestaTabella">
+                
+            </div>
 	 <div id="main">
-                  v<br>
-             f
-             c
-             f
-             c
-             we
-             c<br>
-             we
-             c
-             we
-             c
-             e<br>
-               c<br>  c<br>  c<br>  c<br>  c<br>  c<br>  c<br>>
-               c<br>
-             v<br>
-             fe<br>
-               c<br>  c<br>  c<br>  c<br>  c<br>  c<br>  c<br>>
-               c<br>
-             v<br>
-             ce<br>
-               c<br>  c<br>  c<br>  c<br>  c<br>  c<br>  c<br>>
-               c<br>
-             v<br>
-             f
-             ce<br>
-               c<br>  c<br>  c<br>  c<br>  c<br>  c<br>  c<br>>
-               c<br>
-             v<br>
-             we
-             c<br>
-             we
-             c
-             we
-             c
-             e<br>              
+                     
 	 </div>
 	 <div id="sidebar">
              <table> 
