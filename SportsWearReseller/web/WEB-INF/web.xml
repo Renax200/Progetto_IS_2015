@@ -68,6 +68,30 @@
         <servlet-name>VisualizzaCategoriaServletStampe</servlet-name>
         <servlet-class>servlet.GestioneMagazzino.VisualizzaCategoriaServletStampe</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RicercaProdottoServlet</servlet-name>
+        <servlet-class>servlet.GestioneMagazzino.RicercaProdottoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RicercaProdottoServletCategoria</servlet-name>
+        <servlet-class>servlet.GestioneMagazzino.RicercaProdottoServletCategoria</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RicercaClientiServlet</servlet-name>
+        <servlet-class>servlet.GestioneClienti.RicercaClientiServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaVenditoreServlet</servlet-name>
+        <servlet-class>servlet.GestioneFaQ.VisualizzaVenditoreServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizzaCarrelloServlet</servlet-name>
+        <servlet-class>servlet.GestioneCarrello.VisualizzaCarrelloServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InserimentoCarrelloServlet</servlet-name>
+        <servlet-class>servlet.GestioneCarrello.InserimentoCarrelloServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -135,6 +159,30 @@
     <servlet-mapping>
         <servlet-name>VisualizzaCategoriaServletStampe</servlet-name>
         <url-pattern>/VisualizzaCategoriaServletStampe</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RicercaProdottoServlet</servlet-name>
+        <url-pattern>/RicercaProdottoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RicercaProdottoServletCategoria</servlet-name>
+        <url-pattern>/RicercaProdottoServletCategoria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RicercaClientiServlet</servlet-name>
+        <url-pattern>/RicercaClientiServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaVenditoreServlet</servlet-name>
+        <url-pattern>/VisualizzaVenditoreServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizzaCarrelloServlet</servlet-name>
+        <url-pattern>/VisualizzaCarrelloServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InserimentoCarrelloServlet</servlet-name>
+        <url-pattern>/InserimentoCarrelloServlet</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

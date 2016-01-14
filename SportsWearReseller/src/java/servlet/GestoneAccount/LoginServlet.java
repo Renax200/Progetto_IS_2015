@@ -7,6 +7,7 @@ package servlet.GestoneAccount;
 
 import Entità.Account;
 import Managers.AccountManager;
+import Managers.MagazzinoManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -46,7 +47,8 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher rd=request.getRequestDispatcher("AdminLoginHome.jsp");    
             rd.forward(request,response);    
         }    
-        else if(account.getTipo().equals("Cliente")){    
+        else if(account.getTipo().equals("Cliente")){
+            session.setAttribute("lista", MagazzinoManager.listaProdotti());
             RequestDispatcher rd=request.getRequestDispatcher("ClienteLoginHome.jsp");    
             rd.forward(request,response); 
         }

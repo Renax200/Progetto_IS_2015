@@ -32,7 +32,7 @@
                              <h4 class="admin">Ricerca Prodotto</h4>
                         </td>
                         <td>
-                             <form id="ricerca" action="">
+                             <form method="post" action="RicercaProdottoServlet">
                              <input type="text" name="ricerca" required="required" >
                              <input type ="submit" value="Cerca">
                             </form>
@@ -62,7 +62,7 @@
                  <td width="40%"><h4 class="admin2">Descrizione</h4></td> 
                  <td width="10%"><h4 class="admin2">Prezzo</h4></td>
                  <td width="10%"><h4 class="admin2">Categoria</h4></td>
-                 <td width="10%"><h4 class="admin2">Quantità Disponibil i</h4></td>
+                 <td width="10%"><h4 class="admin2">Quantità Disponibili</h4></td>
                  </tr>
              </table>
          </div> 

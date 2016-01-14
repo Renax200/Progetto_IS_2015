@@ -13,23 +13,26 @@ import java.util.ArrayList;
  */
 public class Carrello {
     
-    private ArrayList<Prodotto> mioCarrello;
+    private static final ArrayList<Prodotto> mioCarrello = new ArrayList<Prodotto>();
 
-    public Carrello() {
-        this.mioCarrello = new ArrayList<Prodotto>();
+
+    
+    public static ArrayList<Prodotto> getContenuto(){
+        return mioCarrello;
     }
     
-    public ArrayList<Prodotto> getContenuto(){
-        return this.mioCarrello;
+    public static  int getNumProdotti(){
+        return mioCarrello.size();
     }
     
-    public int getNumProdotti(){
-        return this.mioCarrello.size();
+    public static void InserisciNelCarrello(Prodotto p){
+        mioCarrello.add(p);
     }
     
-    public float getPrezzoTotate(){
+    
+    public static float getPrezzoTotate(){
        float sum=0;
-        for(Prodotto p : this.mioCarrello){
+        for(Prodotto p : mioCarrello){
             sum = sum+p.getPrezzo();
         }
         

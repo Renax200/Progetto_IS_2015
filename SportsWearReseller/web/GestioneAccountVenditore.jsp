@@ -31,7 +31,6 @@
                         </form>
                       </tr>
                   </table>
-                </center>
 	 </div>
             <div id ="TestaTabella">
                 

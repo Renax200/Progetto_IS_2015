@@ -19,9 +19,9 @@ import java.sql.Statement;
  */
 public class AccountManager {
 
-    private static String login ="select * from account where email=? and password=?"; 
-    private static String creaAccount="INSERT INTO magazzino.account (email, password, nome, cognome, nome_società, partita_iva, tipo)VALUES(?,?,?,?,?,?,?)";     
-    private static String eliminaAccount="DELETE FROM magazzino.account WHERE email=";
+    private static String LOGIN ="select * from account where email=? and password=?"; 
+    private static String CREA_ACCOUNT="INSERT INTO magazzino.account (email, password, nome, cognome, nome_società, partita_iva, tipo)VALUES(?,?,?,?,?,?,?)";     
+    private static String ELIMINA_ACCOUNT="DELETE FROM magazzino.account WHERE email=?";
     
     
     
@@ -48,7 +48,7 @@ public class AccountManager {
             Class.forName(driver).newInstance();  
             conn = DriverManager.getConnection(url + dbName, userName, password);  
             
-            String sql = login;
+            String sql = LOGIN;
             Statement st = conn.createStatement();
             ps = conn.prepareStatement(sql);
             ps.setString(1, email);  
@@ -122,7 +122,7 @@ public class AccountManager {
            conn = DriverManager.getConnection(url + dbName, userName, password);  
                 
            Statement st = conn.createStatement();
-           String sql = creaAccount;
+           String sql = CREA_ACCOUNT;
                   
            ps = conn.prepareStatement(sql);
            ps.setString(1, email);
@@ -181,8 +181,8 @@ public class AccountManager {
            conn = DriverManager.getConnection(url + dbName, userName, password);  
                 
            Statement st = conn.createStatement();
-           String sql = eliminaAccount+"\""+account.getEmail()+"\"";
-                  
+           String sql = ELIMINA_ACCOUNT;
+            ps.setString(1, account.getEmail());
             ps = conn.prepareStatement(sql);
             res = ps.executeUpdate();
 

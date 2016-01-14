@@ -1,19 +1,14 @@
-<%-- 
-    Document   : GestioneOrdiniVenditore
-    Created on : 31-dic-2015, 14.17.41
-    Author     : carfo
---%>
 <%@page import="Entità.Carrello"%>
-<%@page import="Entità.Prodotto"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="Managers.MagazzinoManager"%>
+<%@page import="Entità.Prodotto"%>
 <%@page import="Entità.Account"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  
-    pageEncoding="ISO-8859-1"%> 
+    pageEncoding="ISO-8859-1"%>  
 <% Account a = (Account) session.getAttribute("account"); %>
-
 <html>
     <head>
-        <title>SWR|Ordini|<%=a.getNome()%></title>
+        <title>SWR|Carrello| <%=a.getNome()%></title
                 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel="stylesheet" type="text/css" href="css/mioStile.css">
                 <script language="javascript" type ="text/javascript" src="jscript/Admin.js"></script>
@@ -21,34 +16,44 @@
 	
 	<body>
 	
-	 <div id = "header">
-              <table  cellspacing="5">
-                <tr>
-                    <td>  
-                        <form action="VisualizzaHomeServlet">
-                        <input type="image" alt ="Home"src="grafica/logo.jpg" width="150" height="100" onclick="cambia('int','home')">
-                        </form>
-                    </td>
-                    <td> <img id="int" src="grafica/ordini.jpg" width="280" height="80"></td>
-                    <td><img src="grafica/sfondo.jpg" width="600" height="100"></td>
-                    <td>
+	 <div id="header">
+             <table>
+                      <tr>
+                         <td rowspan="8">
+                          <form action="VisualizzaHomeServlet">
+                            <input type="image" src="grafica/logo.jpg" width="150" height="100" >
+                              </form>
+                         </td>
+                         <td>
+                             <img id="int" src="grafica/carrello.jpg" width="280" height="80">
+                         </td>
+                        <td>
+                             <h4 class="admin">Ricerca Prodotto</h4>
+                        </td>
+                        <td>
+                             <form method="post" action="RicercaProdottoServletCategoria">
+                                 <input type="text" name="ricerca" required="required">
+                             <input type ="submit" value="Cerca">
+                            </form>
+                        </td>
+                        <td>
                         <form action="VisualizzaCarrelloServlet">
                             <input type="image" alt="Carrello" id = "car" src="grafica/carrelloout.jpg" name="carrello" width="40" height="40"
                             onmouseover="cambioOver('car','carrello','over')" onmouseout="cambioOut('car','carrello','out')">
                         </form>
-                    </td>
-                    <td>
-                        <%="<h3 class=\"login\">("+Carrello.getNumProdotti()+")</h3>"%>
-                    </td>
-                    <td>
+                         </td>
+                         <td>
+                             <%="<h3 class=\"login\">("+Carrello.getNumProdotti()+")</h3>"%>
+                        </td>
+                        <td>
                         <form action="VisualizzaAccountServlet">
                            <input type="image" alt="Account" id = "utn" src="grafica/utenteout.jpg" name="utente" width="40" height="40"
                                   onmouseover="cambioOver('utn','utente','over')" onmouseout="cambioOut('utn','utente','out')">    
                         </form>
-                    </td>
+                        </td>
                     <td>
                         <form action="VisualizzaOrdiniServlet">
-			<input type="image" id = "ord" src="grafica/ordiniover.jpg" name="ordini" width="40" height="40"
+			<input type="image" id = "ord" src="grafica/ordiniout.jpg" name="ordini" width="40" height="40"
 				onmouseover="cambioOver('ord','ordini','over')" onmouseout="cambioOut('ord','ordini','out')">
                         </form>
 		    </td>
@@ -65,13 +70,52 @@
 		    </td>
                 </tr>
             </table>
-                            
-        </div>
-            <div id="TestaTabella">
-                
-            </div>
-	 <div id="main">
-             
+               
+                </center>
+	 </div>
+         <div id="TestaTabella">
+              <table   width="98%" cellspacing="3">
+                 <tr>
+                 <td width="10%" align="left"><h4 class="admin">idProdotto</h4></td> 
+                 <td width="45%" align="center"><h4 class="admin2">Prodotto</h4></td> 
+                 <td width="50%" align="center"><h4 class="admin2">Acquista</h4></td> 
+                 </tr>
+             </table>
+         </div> 
+         <div id="main">
+                         <table border="2" width="105%" cellspacing="3">  
+             <% for(Prodotto p : Carrello.getContenuto()){ %>
+                <tr hight="20%">
+                    <table width="105%" border="2">
+                        <tr>
+                        <td width="10%" align="center"><%= p.getIdProdotto()%></td>
+                            <td align="center" width="60%">
+                                <table   width="90%">
+                                    <tr><td width="10%"><h5>Categoria</h5></td><td width="40%"><h6><%=p.getCategoria()%></h6></td></tr>
+                                    <tr><td width="10%"><h5>Nome Prodotto</h5></td><td width="40%"><h6><%=p.getNome()%></h6></td></tr>
+                                    <tr><td width="10%"><h5>Disponibili</h5></td><td width="40%"><h6><%=p.getNumeroPezzi()%></h6></td></tr>
+                                    <tr><td colspan="2"><h5><%=p.getDescrizione()%></h5></td></tr>
+                                </table>
+                            </td>
+                            <td width="55%">
+                                <table  width="100%">
+                                    <form method="post" action="">
+                                    <tr><td width="20%"><input type="checkbox"> M</td><td width="35%">x<input type="text" ></td></tr>
+                                    <tr><td width="20%"><input type="checkbox"> L</td><td width="35%">x<input type="text" ></td></tr>
+                                    <tr><td width="20%"><input type="checkbox"> XL</td><td width="35%">x<input type="text" ></td></tr>
+                                    <tr><td width="20%"><input type="checkbox"> XXL</td><td width="35%">x<input type="text" ></td></tr>
+                                    <td><input type="button" nome="add" value="Acquista" ></td></tr>
+                                    </form>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </tr>
+                <% } %>
+                <tr width="105"><td align="Center">Totale <%=Carrello.getPrezzoTotate()%></td><td></td></tr>
+             </table>
+         </div>
+	 
 	    
 	<div id = "sidebar">
 		<h4 class="admin">SELEZIONA CATEGORIA</h4>
@@ -135,8 +179,8 @@
 		</table>
 	</div>
 	
+	 
     </body>
 	
 	
 </html>
-

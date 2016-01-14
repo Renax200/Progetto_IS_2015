@@ -1,47 +1,53 @@
-<%-- 
-    Document   : GestioneAccountCliente
-    Created on : 31-dic-2015, 4.08.57
-    Author     : carfo
---%>
+<%@page import="Entità.Carrello"%>
 <%@page import="Entità.Prodotto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Entità.Account"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  
     pageEncoding="ISO-8859-1"%>  
-<% Account a = (Account) session.getAttribute("account"); 
-ArrayList<Prodotto> carrello = a.getMioCarrello().getContenuto(); %>
+<% Account a = (Account) session.getAttribute("account"); %>
+
 <html>
-	<head>
-		<title><%= a.getNome() %> benvenuto in SportsWearReseller  </title>
-		<script type="text/javascript" src ="jscript/Cliente.js"></script>
-		<link rel="stylesheet" type="text/css" href ="css/mioStile2.css">
-	</head>
+    <head>
+        <title>SWR|Account|<%=a.getNome()%></title>
+                <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="css/mioStile.css">
+                <script language="javascript" type ="text/javascript" src="jscript/Admin.js"></script>
+    </head>
+    
+    
 	<body>
-            
-            
-            
-	<div id = "header">
-            <table cellspacing="5">
+	
+	 <div id="header">
+             <table>
                 <tr>
                     <td>  
                         <form action="VisualizzaHomeServlet">
-                        <input type="image" src="grafica/logo.jpg" width="150" height="100" onclick="cambia('int','home')">
+                        <input type="image" alt ="Home" src="grafica/logo.jpg" width="150" height="100" onclick="cambia('int','home')">
                         </form>
                     </td>
-                    <td> <img id="int" src="grafica/utente.jpg" width="280" height="80"></td>
-                    <td><img src="grafica/sfondo.jpg" width="600" height="100"></td>
+                    <td> <img id="int" src="grafica/home.jpg" width="280" height="80"></td>
+                    <td>
+                        <h4 class="admin">Ricerca Prodotto</h4>
+                        </td>
+                        <td>
+                             <form method="post" action="RicercaProdottoServlet">
+                                 <input type="text" name="ricerca" required="required">
+                             <input type ="submit" value="Cerca">
+                            </form>
+                        </td>
                     <td>
                         <form action="VisualizzaCarrelloServlet">
-                            <input type="image" id = "car" src="grafica/carrelloout.jpg" name="carrello" width="40" height="40"
+                            <input type="image" alt="Carrello" id = "car" src="grafica/carrelloout.jpg" name="carrello" width="40" height="40"
                             onmouseover="cambioOver('car','carrello','over')" onmouseout="cambioOut('car','carrello','out')">
                         </form>
                     </td>
                     <td>
-                        <%="<h3 class=\"login\">("+carrello.size()+")</h3>"%>
+                        <%="<h3 class=\"login\">("+Carrello.getNumProdotti()+")</h3>"%>
                     </td>
                     <td>
                         <form action="VisualizzaAccountServlet">
-                           <input type="image" id = "utn" src="grafica/utenteover.jpg" name="utente" width="40" height="40">    
+                           <input type="image" alt="Account" id = "utn" src="grafica/utenteout.jpg" name="utente" width="40" height="40"
+                                  onmouseover="cambioOver('utn','utente','over')" onmouseout="cambioOut('utn','utente','out')">    
                         </form>
                     </td>
                     <td>
@@ -64,45 +70,50 @@ ArrayList<Prodotto> carrello = a.getMioCarrello().getContenuto(); %>
                 </tr>
             </table>
                             
-                        
-                            
-
-        </div>
-	<div id = "main">
-         <table  cellspacing="10" class="admin3">
+	 </div>
+            <div id ="TestaTabella">
+                
+            </div>   
+	 <div id="mainAccount">
+             
+             <table  collspacing="5" class="admin3">
                  <tr>
+                 <td rowspan="6" cellspacing="5" width="40%">
+                     <table>
+                     <form >
+                         <tr><td><h3 class="tab2">Insersci la tua email</h3></td></tr>
+                         <tr><td><input type="text" nome="email"></td></tr>
+                         <tr><td><h3 class="tab2">Oggetto</h3></td></tr>
+                         <tr><td><input type="text" nome="oggetto"></td></tr>
+                         <tr><td><h3 class="tab2">Messaggio</h3></td></tr>
+                         <tr colspan="3"><td><textarea name="messaggio" cols="30" rows="6"></textarea></td></tr>
+                         <tr><td><input type="submit" value="Invia Messaggio"> <input type="reset" value="Annulla"></td></tr>
+                     </form>
+                     </table>
+                 </td>
                      <td colspan="3" align="right"><img align="left" src="grafica/avatar.jpg" width="120" height="120"></td>
-                     <td rowSpan="5"><img src="grafica/logo2.jpg" width="420" height="320"> </td>
+                     <td rowSpan="5"><img src="grafica/logo2.jpg" width="320" height="220"> </td>
                  </tr>
                  <tr>
-                     <td><h3>Nome<h3></td><td><h4><%=a.getNome()%></h3></td>
+                     <td><h3 class="tab2">Nome</h3></td><td><h4 class="tab2"><%=a.getNome()%></h4></td>
                  </tr>
                  <tr>
-                     <td><h3>Cognome<h3></td><td><h4><%=a.getCognome()%></h3></td>
+                     <td><h3 class="tab2">Cognome</h3></td><td><h4 class="tab2"><%=a.getCognome()%></h4></td>
                  </tr>
                  <tr>
-                     <td><h3>E-mail</h3></td><td><h4><%=a.getEmail()%></h4></td>
+                     <td><h3 class="tab2">E-mail</h3></td><td><h4 class="tab2"><%=a.getEmail()%></h4></td>
                  </tr>
                   <tr>
-                      <td><h3>Password<h3></td><td><h4><%=a.getPassword()%></h4></td>
+                      <td><h3 class="tab2">Password</h3></td><td><h4 class="tab2"><%=a.getPassword()%></h4></td>
                  </tr>
                  <tr>
-                     <td><h3>Nome Società<h3></td><td><h4><%=a.getSocieta()%><h4></td>
+                     <td><h3 class="tab2">Nome Società</h3></td><td><h4 class="tab2"><%=a.getSocieta()%></h4></td>
                  </tr>
-                 <tr>
-                     <td>
-                         <form method="post" action="EliminaAccountServlet">
-                             <input type="submit" value="Elimina Account">
-                         </form>
-                     </td>
-                 </tr>
+                 <td>
+                 </td>
              </table>
-	</div>
-            
-            
-            
-	    
-	<div id = "sidebar">
+             
+	 	<div id = "sidebar">
 		<h4 class="admin">SELEZIONA CATEGORIA</h4>
 		<table>
 			<tr>
@@ -163,8 +174,8 @@ ArrayList<Prodotto> carrello = a.getMioCarrello().getContenuto(); %>
 			</tr>
 		</table>
 	</div>
+	 
+    </body>
 	
 	
-	
-	</body>
 </html>

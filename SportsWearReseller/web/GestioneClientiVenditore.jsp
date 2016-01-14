@@ -34,7 +34,7 @@
                              <h4 class="admin">Ricerca Cliente</h4>
                         </td>
                         <td width="75%">
-                             <form id="ricerca" action="">
+                             <form method="post" action="RicercaClientiServlet">
                              <input type="text" name="ricerca" required="required" >
                              <input type ="submit" value="Cerca">
                             </form>

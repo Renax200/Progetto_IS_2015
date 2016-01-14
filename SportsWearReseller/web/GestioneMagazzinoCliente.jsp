@@ -1,3 +1,4 @@
+<%@page import="Entità.Carrello"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Managers.MagazzinoManager"%>
 <%@page import="Entità.Prodotto"%>
@@ -6,6 +7,9 @@
     pageEncoding="ISO-8859-1"%>  
 <% Account a = (Account) session.getAttribute("account"); %>
 <% ArrayList<Prodotto> lista = (ArrayList<Prodotto>) session.getAttribute("listaCat"); %>
+<% String categoria = lista.get(0).getCategoria();
+   session.setAttribute("categoria", categoria); 
+%>
 <html>
     <head>
         <title>SWR|Magazzino| <%=a.getNome()%></title
@@ -31,8 +35,8 @@
                              <h4 class="admin">Ricerca Prodotto</h4>
                         </td>
                         <td>
-                             <form id="ricerca" action="">
-                             <input type="text" name="ricerca" required="required" >
+                             <form method="post" action="RicercaProdottoServletCategoria">
+                                 <input type="text" name="ricerca" required="required">
                              <input type ="submit" value="Cerca">
                             </form>
                         </td>
@@ -42,6 +46,9 @@
                             onmouseover="cambioOver('car','carrello','over')" onmouseout="cambioOut('car','carrello','out')">
                         </form>
                          </td>
+                         <td>
+                             <%="<h3 class=\"login\">("+Carrello.getContenuto().size()+")</h3>"%>
+                        </td>
                         <td>
                         <form action="VisualizzaAccountServlet">
                            <input type="image" alt="Account" id = "utn" src="grafica/utenteout.jpg" name="utente" width="40" height="40"
@@ -54,6 +61,11 @@
 				onmouseover="cambioOver('ord','ordini','over')" onmouseout="cambioOut('ord','ordini','out')">
                         </form>
 		    </td>
+                    <td>
+                        <form action="VisualizzaVenditoreServlet">
+			<input type="submit" value="FaQ">
+                        </form>
+                    </td>
                      <td>
                         <form method="post" action="LogoutServlet">
 			<input type="image" id = "lout" src="grafica/logoutout.jpg" name="ordini" width="40" height="40"
@@ -66,30 +78,46 @@
                 </center>
 	 </div>
          <div id="TestaTabella">
-             
-             <table   width="84%" cellspacing="3">
+              <table   width="98%" cellspacing="3">
                  <tr>
-                 <td width="10%"><h4 class="admin2">Numero</h4></td> 
-                 <td width="20%"><h4 class="admin2">Nome Prodotto</h4></td> 
-                 <td width="40%"><h4 class="admin2">Descrizione</h4></td> 
-                 <td width="10%"><h4 class="admin2">Prezzo</h4></td>
-                 <td width="10%"><h4 class="admin2">Quantità Disponibili</h4></td>
+                 <td width="10%" align="left"><h4 class="admin">idProdotto</h4></td> 
+                 <td width="45%" align="center"><h4 class="admin2">Prodotto</h4></td> 
+                 <td width="50%" align="center"><h4 class="admin2">Acquista/Aggiungi al Carrello</h4></td> 
                  </tr>
              </table>
          </div> 
          <div id="main">
-             
-            <table   width="105%" cellspacing="3">
+                         <table border="2" width="105%" cellspacing="3">  
              <% for(Prodotto p : lista){ %>
-             <tr>
-                 <td width="10%"><h4 class="tab"><%=p.getIdProdotto() %></h4></td> 
-                 <td width="20%"><h4 class="tab"><%=p.getNome()%></h4></td> 
-                 <td width="40%"><h4 class="tab"><BLOCKQUOTE><%=p.getDescrizione()%></BLOCKQUOTE></h4></td> 
-                 <td width="10%"><h4 class="tab"><%=p.getPrezzo()%></h4></td>
-                 <td width="10%"><h4 class="tab"><%=p.getNumeroPezzi()%></h4></td>  
-             </tr>
+                <tr hight="20%">
+                    <table width="105%" border="2">
+                        <tr>
+                        <td width="10%" align="center"><%= p.getIdProdotto()%></td>
+                            <td align="center" width="60%">
+                                <table   width="90%">
+                                    <tr><td width="10%"><h5>Categoria</h5></td><td width="40%"><h6><%=p.getCategoria()%></h6></td></tr>
+                                    <tr><td width="10%"><h5>Nome Prodotto</h5></td><td width="40%"><h6><%=p.getNome()%></h6></td></tr>
+                                    <tr><td width="10%"><h5>Disponibili</h5></td><td width="40%"><h6><%=p.getNumeroPezzi()%></h6></td></tr>
+                                    <tr><td colspan="2"><h5><%=p.getDescrizione()%></h5></td></tr>
+                                </table>
+                            </td>
+                            <td width="55%">
+                                <table  width="100%">
+                                    <form>
+                                    <tr><td width="20%"><input type="checkbox" name="M"> M</td><td width="35%">x<input type="text" name="QntM"></td></tr>
+                                    <tr><td width="20%"><input type="checkbox" name="L"> L</td><td width="35%">x<input type="text" name="QntL"></td></tr>
+                                    <tr><td width="20%"><input type="checkbox" name="XL"> XL</td><td width="35%">x<input type="text" name="QntXL"></td></tr>
+                                    <tr><td width="20%"><input type="checkbox" name="XXL"> XXL</td><td width="35%">x<input type="text" name="QntXXL"></td></tr>
+                                    <tr colspan="2"><td><input type="submit" nome="add" value="Aggiungi al Carrello"></td>
+                                    <td><input type="button" nome="add" value="Acquista"></td></tr>
+                                    </form>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </tr>
                 <% } %>
-            </table>
+             </table>
          </div>
 	 
 	    
