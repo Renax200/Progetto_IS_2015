@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package servlet.GestioneMagazzino;
-
 import exception.MagazzinoException;
 import exception.NameException;
 import manager.MagazzinoManager;
@@ -26,6 +25,8 @@ import javax.servlet.http.HttpSession;
  */
 public class InsertProdottoServlet extends HttpServlet {
 
+    private static final long serialVersionUID = 1L;
+
     public void doPost(HttpServletRequest request, HttpServletResponse response)    
             throws ServletException, IOException {    
   
@@ -39,7 +40,7 @@ public class InsertProdottoServlet extends HttpServlet {
         String prezzo=request.getParameter("prezzo");
         String categoria=request.getParameter("categoria");
       
-       try{
+        try{
                 int idP = Integer.parseInt(idProdotto);
                 int numPz = Integer.parseInt(numero_Pezzi);
                 float prz = Float.parseFloat(prezzo);
@@ -47,12 +48,14 @@ public class InsertProdottoServlet extends HttpServlet {
                 HttpSession session = request.getSession(true);   
                 session.setAttribute("account", session.getAttribute("account"));  
                 session.setAttribute("lista", MagazzinoManager.getInstance().listaProdotti());
-                RequestDispatcher rd=request.getRequestDispatcher("InsertProdottoServlet.jsp");    
+                RequestDispatcher rd=request.getRequestDispatcher("InserimentoProdotto.jsp");    
                 rd.forward(request,response); 
+                
             } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException |
                     MagazzinoException | NameException ex) {
             Logger.getLogger(InsertProdottoServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                
+            }
            
             
         

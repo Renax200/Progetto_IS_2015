@@ -7,7 +7,7 @@ package exception;
 
 /**
  *
- * @author carfo
+ * @author Grappone Renato
  */
 public class NullAccountException extends Exception {
      private static final long serialVersionUID = 1L;

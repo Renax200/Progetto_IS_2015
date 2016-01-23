@@ -5,19 +5,14 @@
  */
 package manager;
 
-import entità.Prodotto;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
+
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author carfo
+ * @author Grappone Renato
  */
 public class MagazzinoManagerTest {
     
@@ -35,7 +30,7 @@ public class MagazzinoManagerTest {
     
     
     @Test
-    public void testgetInstance()throws Exception {
+    public void testgetInstance(){
          MagazzinoManager result = MagazzinoManager.getInstance();
          assertNotNull(result);
          
@@ -43,7 +38,7 @@ public class MagazzinoManagerTest {
     
     
     @Test
-    public void testInserimentoProdottoOK()throws Exception{
+    public void testInserimentoProdottoOK(){
         String idP="15";
         String nome="Completini Inter";
         String descrizione="Completini di taglia XL L ed S"; 
@@ -62,7 +57,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testInserimentoProdottoExist()throws Exception{
+    public void testInserimentoProdottoExist(){
         String idP="15";
         String nome="Completini Inter";
         String descrizione="Completini di taglia XL L ed S"; 
@@ -82,7 +77,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testInserimentoProdottoIdZero()throws Exception{
+    public void testInserimentoProdottoIdZero(){
         String idP="0";
         String nome="Completini Inter";
         String descrizione="Completini di taglia XL L ed S"; 
@@ -101,7 +96,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testInserimentoProdottoIdMin()throws Exception{
+    public void testInserimentoProdottoIdMin(){
         String idP="-50";
         String nome="Completini Inter";
         String descrizione="Completini di taglia XL L ed S"; 
@@ -120,7 +115,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testInserimentoProdottoIdNotNumber()throws Exception{
+    public void testInserimentoProdottoIdNotNumber(){
         String idP="hbhy";
         String nome="Completini Inter";
         String descrizione="Completini di taglia XL L ed S"; 
@@ -140,7 +135,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testInserimentoProdottoNameMax()throws Exception{
+    public void testInserimentoProdottoNameMax(){
         String idP="25";
         String nome="provaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNomeprovaNome";
         String descrizione="Completini di taglia XL L ed S"; 
@@ -161,7 +156,7 @@ public class MagazzinoManagerTest {
     
     
     @Test
-    public void testInserimentoProdottoNomeMin()throws Exception{
+    public void testInserimentoProdottoNomeMin(){
         String idP="55";
         String nome="";
         String descrizione="Completini di taglia XL L ed S"; 
@@ -181,7 +176,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testInserimentoProdottoMaxDescrizione()throws Exception{
+    public void testInserimentoProdottoMaxDescrizione(){
         String idP="45";
         String nome="Completini Juve";
         String descrizione="DescrizioneProvaDescrizioneProvaDescrizioneProvaDescrizioneProvaDescrizioneProvaDescrizione"
@@ -204,7 +199,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testInserimentoProdottoNumPezzNotNumber()throws Exception{
+    public void testInserimentoProdottoNumPezzNotNumber(){
         String idP="56";
         String nome="Completini Juve";
         String descrizione="DescrizioneProva"; 
@@ -224,7 +219,7 @@ public class MagazzinoManagerTest {
     }
     
      @Test
-    public void testInserimentoProdottoNumPezzNegativ()throws Exception{
+    public void testInserimentoProdottoNumPezzNegativ(){
         String idP="59";
         String nome="Completini Juve";
         String descrizione="DescrizioneProva"; 
@@ -244,7 +239,7 @@ public class MagazzinoManagerTest {
     }
     
      @Test
-    public void testInserimentoProdottoPrezzoNotNumber()throws Exception{
+    public void testInserimentoProdottoPrezzoNotNumber(){
         String idP="90";
         String nome="Completini Juve";
         String descrizione="DescrizioneProva"; 
@@ -264,7 +259,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testInserimentoProdottoPrezzoNegativ()throws Exception{
+    public void testInserimentoProdottoPrezzoNegativ(){
         String idP="20555";
         String nome="Completini Juve";
         String descrizione="DescrizioneProva"; 
@@ -284,7 +279,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testInserimentoProdottoPrezzoZero()throws Exception{
+    public void testInserimentoProdottoPrezzoZero(){
         String idP="20555";
         String nome="Completini Juve";
         String descrizione="DescrizioneProva"; 
@@ -305,7 +300,7 @@ public class MagazzinoManagerTest {
     
     
     @Test
-    public void testGetLitaProdottiOK() throws Exception{
+    public void testGetListaProdottiOK(){
         try{
             instance.listaProdotti();
             assert(true);
@@ -315,7 +310,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testGetListaProdottiCateogiaOK() throws Exception{
+    public void testGetListaProdottiCateogiaOK(){
         try{
             instance.listaProdottiCatogoria("Completini");
             assert(true);
@@ -325,7 +320,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testGetListaProdottiCategoriaNull()throws Exception{
+    public void testGetListaProdottiCategoriaNull(){
         try{
             instance.listaProdottiCatogoria("Scarpette");
             fail("sono riuscito a fare l'operazione");
@@ -336,7 +331,7 @@ public class MagazzinoManagerTest {
     
     
     @Test 
-    public void testRicercaProdottoOK()throws Exception{
+    public void testRicercaProdottoOK(){
         try{
             instance.ricercaProdotto("inter");
             assert(true);
@@ -346,7 +341,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testRicercaProdottoNULL()throws Exception{
+    public void testRicercaProdottoNULL(){
         try{
             instance.ricercaProdotto("Nike");
             fail("sono riuscito ad effettuare l'operazione");
@@ -356,7 +351,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testRicercaProdottoCategoriaOk()throws Exception{
+    public void testRicercaProdottoCategoriaOk(){
         try{
             instance.ricercaProdottoCategoria("inter", "Completini");
             assert(true);
@@ -366,7 +361,7 @@ public class MagazzinoManagerTest {
     }
     
     @Test
-    public void testRicercaProdottoCatecoriaNull()throws Exception{
+    public void testRicercaProdottoCatecoriaNull(){
         try{
             instance.ricercaProdottoCategoria("Milan", "Completini");
             fail("sono riuscito ad effettuare l'operazione");

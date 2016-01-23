@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author carfo
+ * @author Grappone Renato
  */
 public class RicercaProdottoServlet extends HttpServlet {
 
@@ -68,9 +68,7 @@ public class RicercaProdottoServlet extends HttpServlet {
         } catch (ClassNotFoundException | InstantiationException  | IllegalAccessException | 
                 SQLException | MagazzinoException ex) {
              Logger.getLogger(RicercaProdottoServlet.class.getName()).log(Level.SEVERE, null, ex);
-             out.print("<SCRIPT id=\"al\" TYPE=\"text/javascript\">\n" +
-                          "alert(\""+ex.getMessage()+"\");</SCRIPT>");
-             out.close();
+             out.println("<script> alert(\""+ex.getLocalizedMessage()+"\");</script>");
              if(a.getTipo().equals("Venditore")){
                 session.setAttribute("account", a);
                 RequestDispatcher rd=request.getRequestDispatcher("AdminLoginHome.jsp");

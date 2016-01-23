@@ -35,7 +35,7 @@
                     </td>
                         <td width="65%">
                             <% try { %>
-                             <form method="post" action="RicercaProdottoServlet">
+                             <form method="post" action="RicercaProdottoServletCategoria">
                                  <input type="search" name="ricerca" required="required">
                              <input type ="submit" value="Cerca">
                             </form>

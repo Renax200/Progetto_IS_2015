@@ -5,16 +5,11 @@
  */
 package manager;
 
-import entità.Account;
-import exception.*;
-import com.sun.mail.iap.ConnectionException;
-import java.sql.SQLException;
-import org.junit.After;
-import org.junit.AfterClass;
+
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.BeforeClass;
+
 
 /**
  *
@@ -71,7 +66,7 @@ public class AccountManagerTest {
         String indirizzo = "Università degli Studi di Salerno";  
          try{
             instance.creaAccount(nome,cognome,mail,passr,societa,indirizzo,partitaIva,tipo);
-          fail("sono riuscito ad effettuare l' op");
+            fail("sono riuscito ad effettuare l' op");
         }catch(Exception e){
             assertTrue(true);
             }
@@ -82,6 +77,24 @@ public class AccountManagerTest {
     public void testMaxEmailIscrizione(){
 	String mail="Prova stringa massimaProva stringa massimaProva stringa massimaProva stringa massimaProva stringa massimaProva stringa massimaProva stringa massimaProva stringa massimaProva stringa massimaProva stringa massimaProva stringa massimaProva stringa massimaProva stringa massimaProva stringa massima";
 	String passr="unisaEsameIs";
+        String nome="Andrea";
+        String cognome="De Lucia";
+        String societa="Sports Wear Reseller";
+        String partitaIva="23344556678";
+        String tipo="Cliente";
+        String indirizzo = "Università degli Studi di Salerno"; 
+         try{
+            instance.creaAccount(nome,cognome,mail,passr,societa,indirizzo,partitaIva,tipo);
+          fail("sono riuscito ad effettuare l' op");
+        }catch(Exception e){
+            assertTrue(true);
+            }
+    }
+    
+       @Test
+    public void testFormatEmailIscrizione(){
+        String mail = "antoniorossi";
+        String passr="unisaEsameIs";
         String nome="Andrea";
         String cognome="De Lucia";
         String societa="Sports Wear Reseller";
@@ -164,7 +177,7 @@ public class AccountManagerTest {
         String indirizzo = "Università degli Studi di Salerno";
          try{
             instance.creaAccount(nome,cognome,mail,passr,societa,indirizzo,partitaIva,tipo);
-           fail("sono riuscito ad effettuare l' op");
+            fail("sono riuscito ad effettuare l' op");
         }catch(Exception e){
             assertTrue(true);
             }
@@ -195,7 +208,7 @@ public class AccountManagerTest {
 	String passr="provaprty";
         String nome="Andrea";
         String cognome="De Lucia";
-        String societa="provaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprova";
+        String societa="provaSOCIETàprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprovaprova";
         String partitaIva="23344556678";
         String tipo="Cliente";
         String indirizzo = "Università degli Studi di Salerno";
@@ -307,11 +320,9 @@ public class AccountManagerTest {
    
     
 @Test
-    public void testMinUserLogin(){
+    public void testMinUserPassLogin(){
        String user = "";
        String pass = "";
-        
-        
          try{
             instance.logIn(user,pass);
             fail("sono riuscito a fare l' op");
@@ -324,9 +335,7 @@ public class AccountManagerTest {
     @Test
     public void testMaxUserLogin(){
        String user = "Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,";
-       String pass = "";
-        
-        
+       String pass = "cliente12";
          try{
             instance.logIn(user,pass);
             fail("sono riuscito a fare l' op");
@@ -348,13 +357,34 @@ public class AccountManagerTest {
         }
     }
     
+     @Test
+    public void testEmailFormatLogin(){
+       String user = "adeluciahotmail.it";
+       String pass = "";
+         try{
+            instance.logIn(user,pass);
+            fail("sono riuscito a fare l' op");
+        }catch(Exception x){
+            assertTrue(true);
+        }
+    }
     
     @Test
     public void testMaxPassLogin(){
        String user = "adelucia@hotmail.it";
        String pass = "Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,Prova superamento stringa,";
-        
-        
+         try{
+            instance.logIn(user,pass);
+            fail("sono riuscito a fare l' op");
+        }catch(Exception x){
+            assertTrue(true);
+        }
+    }
+    
+    @Test
+    public void testFormarmatPassLogin(){
+       String user = "antonio.parlato@gmail.com";
+       String pass = "khjbnlyuij";
          try{
             instance.logIn(user,pass);
             fail("sono riuscito a fare l' op");

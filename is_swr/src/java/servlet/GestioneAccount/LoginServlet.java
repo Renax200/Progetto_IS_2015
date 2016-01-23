@@ -71,13 +71,12 @@ public class LoginServlet extends HttpServlet {
                  InstantiationException | IllegalAccessException| MagazzinoException|
                  EmailException | PasswordException | NullAccountException ex) {
              Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-             out.print("<SCRIPT id=\"al\" TYPE=\"text/javascript\">\n" +
-                          "alert(\""+ex.getLocalizedMessage()+"\");</SCRIPT>");
+             out.println("<script> alert(\""+ex.getLocalizedMessage()+"\");</script>");
              RequestDispatcher rd=request.getRequestDispatcher("index.jsp");    
              rd.include(request,response);
          }
         
-        out.close();    
+       
     }    
 }
 

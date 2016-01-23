@@ -154,7 +154,7 @@ public class AccountManager {
            ps.setString(8, testPartitaIva(partitaIva));
            
        
-          if(ps.executeUpdate() == 1){
+          if(ps.executeUpdate() != 0){
               Account account = new Account(email,pass,nome,cognome,societa,indirizzo,tipo,partitaIva);
               return testAccount(account);
           }
@@ -310,7 +310,7 @@ public class AccountManager {
     }
     
     private static String testSocieta(String societa) throws SocietaException {
-        if (societa.isEmpty() || (societa.length() < 1) || (societa.length() > 25)) {
+        if ( societa.isEmpty() || (societa.length() < 1) || (societa.length() > 25) ) {
             throw new SocietaException("Lunghezza nome Società non conforme");
         }
         return societa;

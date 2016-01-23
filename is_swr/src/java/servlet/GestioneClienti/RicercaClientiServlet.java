@@ -52,8 +52,7 @@ public class RicercaClientiServlet extends HttpServlet {
         rd.forward(request,response);   
         } catch (MagazzinoException | SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
           Logger.getLogger(RicercaClientiServlet.class.getName()).log(Level.SEVERE, null, ex);
-           out.print("<SCRIPT id=\"al\" TYPE=\"text/javascript\">\n" +
-                          "alert(\""+ex.getLocalizedMessage()+"\");</SCRIPT>");
+           out.println("<script> alert(\""+ex.getLocalizedMessage()+"\");</script>");
             RequestDispatcher rd=request.getRequestDispatcher("AdminLoginHome.jsp");    
             rd.forward(request,response);
       }

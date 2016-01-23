@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author carfo
+ * @author Grappone Renato
  */
 public class VisualizzaCarrelloServlet extends HttpServlet {
 

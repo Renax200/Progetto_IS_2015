@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author carfo
+ * @author Grappone Renato
  */
 public class Account {
     

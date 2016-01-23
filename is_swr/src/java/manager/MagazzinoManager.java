@@ -129,7 +129,7 @@ public class MagazzinoManager {
                 prodotti.add(p);
             }
             
-            if(prodotti.size()!= 0){
+            if(!prodotti.isEmpty()){
                 return prodotti;
             }else{
                 throw new MagazzinoException("Non sono presenti prodotti in Magazzino");

@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author carfo
+ * @author Grappone Renato
  */
 public class VisualizzaCategoriaServletCompletini extends HttpServlet {
 
@@ -49,6 +49,7 @@ public class VisualizzaCategoriaServletCompletini extends HttpServlet {
         } catch (MagazzinoException | SQLException | ClassNotFoundException | InstantiationException | 
                 IllegalAccessException ex) {
              Logger.getLogger(VisualizzaCategoriaServletTute.class.getName()).log(Level.SEVERE, null, ex);
+             out.println("<script> alert(\""+ex.getLocalizedMessage()+"\");</script>");
              session.setAttribute("account", session.getAttribute("account"));
              session.setAttribute("lista", session.getAttribute("lista"));
              RequestDispatcher rd=request.getRequestDispatcher("ClienteLoginHome.jsp");

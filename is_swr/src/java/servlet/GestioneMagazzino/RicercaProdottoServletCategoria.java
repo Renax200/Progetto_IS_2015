@@ -54,9 +54,7 @@ public class RicercaProdottoServletCategoria extends HttpServlet {
         }
      catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException | MagazzinoException ex) {
          Logger.getLogger(RicercaProdottoServletCategoria.class.getName()).log(Level.SEVERE, null, ex);
-              out.print("<SCRIPT id=\"al\" TYPE=\"text/javascript\">\n" +
-                          "alert(\""+ex.getLocalizedMessage()+"\");</SCRIPT>");
-              out.close();
+            out.println("<script> alert(\""+ex.getLocalizedMessage()+"\");</script>");
             session.setAttribute("account", session.getAttribute("account"));
             session.setAttribute("listaCat", session.getAttribute("listaCat"));
             RequestDispatcher rd=request.getRequestDispatcher("ClienteLoginHome.jsp");

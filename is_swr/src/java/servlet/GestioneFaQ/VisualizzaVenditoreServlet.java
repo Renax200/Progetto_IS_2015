@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author carfo
+ * @author Grappone Renato
  */
 public class VisualizzaVenditoreServlet extends HttpServlet {
 

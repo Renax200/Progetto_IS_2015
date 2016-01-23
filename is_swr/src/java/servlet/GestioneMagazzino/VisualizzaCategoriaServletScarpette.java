@@ -53,8 +53,7 @@ public class VisualizzaCategoriaServletScarpette extends HttpServlet {
         } catch (MagazzinoException | SQLException | ClassNotFoundException | InstantiationException | 
                 IllegalAccessException ex) {
              Logger.getLogger(VisualizzaCategoriaServletTute.class.getName()).log(Level.SEVERE, null, ex);
-             out.print("<SCRIPT id=\"al\" TYPE=\"text/javascript\">\n" +
-                          "alert(\""+ex.getLocalizedMessage()+"\");</SCRIPT>");
+             out.println("<script> alert(\""+ex.getLocalizedMessage()+"\");</script>");
              session.setAttribute("account", session.getAttribute("account"));
              session.setAttribute("lista", session.getAttribute("lista"));
              RequestDispatcher rd=request.getRequestDispatcher("ClienteLoginHome.jsp");

@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * @author carfo
+ * @author Grappone Renato
  */
 public class CreateAccountServlet extends HttpServlet {
 
@@ -57,8 +57,7 @@ public class CreateAccountServlet extends HttpServlet {
                         NameException | SocietaException | PIvaException |MagazzinoException |
                         InstantiationException | IllegalAccessException ex) {
                     Logger.getLogger(CreateAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    out.print("<SCRIPT id=\"al\" TYPE=\"text/javascript\">\n" +
-                          "alert(\""+ex.getLocalizedMessage()+"\");</SCRIPT>");
+                    out.println("<script> alert(\""+ex.getLocalizedMessage()+"\");</script>");
                     RequestDispatcher rd=request.getRequestDispatcher("index.jsp");    
                     rd.forward(request,response);
                 } 

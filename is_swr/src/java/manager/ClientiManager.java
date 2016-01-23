@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author carfo
+ * @author Grappone Renato
  */
 public class ClientiManager {
     
@@ -118,7 +118,7 @@ public class ClientiManager {
             conn = DriverManager.getConnection(url + dbName, userName, password);  
            
              
-                        String sql = "SELECT * FROM magazzino.account WHERE tipo='Cliente' AND nome LIKE '%"+ric+"%' OR nome_società LIKE '%"+ric+"%' OR email LIKE '%"+ric+"%' OR cognome LIKE '%"+ric+"%' ORDER BY cognome ASC";
+                        String sql = "SELECT * FROM magazzino.account WHERE tipo='Cliente' AND (nome LIKE '%"+ric+"%' OR nome_società LIKE '%"+ric+"%' OR email LIKE '%"+ric+"%' OR cognome LIKE '%"+ric+"%') ORDER BY cognome ASC";
                         Statement st = conn.createStatement();
                         ps = conn.prepareStatement(sql);
                         rs = ps.executeQuery();
@@ -135,13 +135,15 @@ public class ClientiManager {
                         a.setTipo(rs.getString("tipo"));
                         clienti.add(a);
                     }
-                  
+               
                if(!clienti.isEmpty()){
-                return clienti;
+                   return clienti;
                 }
-                else{
+               else{
                 throw new MagazzinoException("Non è presente nessun Cliente con questi Requisiti");
                 }
+               
+                
            
         } finally {  
             if (conn != null) {  

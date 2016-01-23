@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author carfo
+ * @author Grappone Renato
  */
 public class VisualizzaHomeServlet extends HttpServlet {
 

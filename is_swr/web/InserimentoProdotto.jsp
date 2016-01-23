@@ -49,7 +49,7 @@
                         <td>
                           <% try { %>  
                          <form metod="post" action="InsertProdottoServlet">
-                            <input type="submit" value="+ Aggiungi nuovo Prodotto">
+                            <input type="button" value="+ Aggiungi nuovo Prodotto">
                          </form>
                            <% } catch(Exception e){ %>
             <script>
