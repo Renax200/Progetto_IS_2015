@@ -91,7 +91,7 @@ public class AccountManager {
                  return testAccount(account);
             }
             else{
-                throw new EmailException();
+                throw new EmailException("Email o Password errate ");
             }
             
         } finally {  
@@ -159,7 +159,7 @@ public class AccountManager {
               return testAccount(account);
           }
           else{
-              throw new EmailException();
+              throw new EmailException("Errore durante l'inserimento dei parametri si prega di riprovare");
           }
           
         } finally {  
@@ -206,10 +206,12 @@ public class AccountManager {
                 
            Statement st = conn.createStatement();
            String sql = ELIMINA_ACCOUNT;
-            ps.setString(1, testEmail(account.getEmail()));
+            
             ps = conn.prepareStatement(sql);
+            ps.setString(1, account.getEmail());
+            
             if(ps.executeUpdate()== 0){
-                throw new EmailException();
+                throw new EmailException("Errore durante l'eliminazione");
             }
 
            
@@ -310,7 +312,7 @@ public class AccountManager {
     }
     
     private static String testSocieta(String societa) throws SocietaException {
-        if ( societa.isEmpty() || (societa.length() < 1) || (societa.length() > 25) ) {
+        if ((societa.length() < 1) || (societa.length() > 45) ) {
             throw new SocietaException("Lunghezza nome Società non conforme");
         }
         return societa;

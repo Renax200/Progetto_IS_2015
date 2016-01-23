@@ -38,12 +38,10 @@ public class EliminaAccountServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             response.setContentType("text/html;charset=UTF-8");
-            
             HttpSession session = request.getSession(true);
-             
-            session.setAttribute("account", session.getAttribute("account"));
+           
             Account a = (Account) session.getAttribute("account");
-            
+           
             AccountManager.getInstance().eliminaAccount(a);
             
             RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
